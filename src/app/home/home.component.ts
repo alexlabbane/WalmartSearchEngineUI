@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { QueryService } from '../query.service';
+var net = require('net');
 
 @Component({
   selector: 'app-home',
@@ -8,12 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
   searchTerm: string;
 
-  constructor() { }
+  constructor(public queryService: QueryService) { }
 
   ngOnInit() {
   }
 
   runSearch() {
+    this.queryService.executeSearch(this.searchTerm);
     console.log(this.searchTerm);
   }
 

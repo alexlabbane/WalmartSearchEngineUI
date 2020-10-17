@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { ResultComponent } from './result/result.component';
 import { FormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     AppComponent,
