@@ -1,1 +1,20 @@
-<p>result works!</p>
+<div class="result-container"  (click)="openLink()">
+    <div class="image-container">
+        <div class="image-cover">
+            <p class="material-icons">launch</p>
+        </div>
+    </div>
+    <div class="content-container">
+        <div class="top-row">
+            <div class="left-container">
+                <h2 class="title">{{this.product.title}}</h2>
+                <p class="category"><i>{{this.product.category}}</i></p>
+            </div>
+            <div class="review-container">
+                <star-rating [value]="this.product.reviewScore" totalstars="5" checkedcolor="gold" uncheckedcolor="black" size="24px" readonly="true" (rate)="onRate($event)"></star-rating>
+                <p class="reviews">{{this.product.reviewScore}} ({{this.product.numReviews}} reviews)</p>
+            </div>
+        </div>
+        <p class="description">{{this.product.description}}</p>
+    </div>
+</div>

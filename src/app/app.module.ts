@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ResultComponent } from './result/result.component';
 import { FormsModule } from '@angular/forms';
+import { RatingModule } from 'ng-starrating';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

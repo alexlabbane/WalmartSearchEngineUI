@@ -5,7 +5,24 @@
             <div class="input-group-prepend">
               <button class="btn btn-outline-secondary material-icons" type="button" (click)="runSearch()">search</button>
             </div>
-            <input type="text" placeholder="Enter search term..." class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="this.searchTerm">
+                <input type="text" placeholder="Enter search term..." class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1" [(ngModel)]="this.searchTerm" (keydown.enter)='enterSearch(event)'>
+            </div>
+    </div>
+    <div class="results-container">
+        <div class="spinner-border" role="status" *ngIf="this.queryService.inProgress">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <div class="result-wrapper" *ngFor="let product of this.queryService.products; let i = index">
+            <app-result *ngIf="i >= (this.page - 1) * 20 && i < this.page * 20" [product]="product"></app-result>
         </div>
     </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li *ngIf="this.page > 1" class="page-item"><a class="page-link" (click)="decrementPage()">Previous</a></li>
+          <li *ngIf="this.page > 1" class="page-item"><a class="page-link" (click)="decrementPage()">{{this.page - 1}}</a></li>
+          <li class="page-item"><a style="background-color: lightgray;" class="page-link">{{this.page}}</a></li>
+          <li *ngIf="this.page < this.queryService.maxPage" class="page-item"><a class="page-link" (click)="incrementPage()">{{this.page + 1}}</a></li>
+          <li *ngIf="this.page < this.queryService.maxPage" class="page-item"><a class="page-link" (click)="incrementPage()">Next</a></li>
+        </ul>
+      </nav>
 </div>
